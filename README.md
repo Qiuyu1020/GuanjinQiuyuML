@@ -13,7 +13,7 @@ Click this file will bring up a web. The function of this web is to fit the reac
 
 #### 1.2  Calculate the mass ratio of elements in the catalyst(mass inputs).
             
-            Start the Atomic Ratio Calculator and enter g.bat
+        Start the Atomic Ratio Calculator and enter g.bat
 Click this bat file will bring up a web. The function of this web is to calculate the mass ratio of elements in the catalyst.
 
 
