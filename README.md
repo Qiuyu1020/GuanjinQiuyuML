@@ -1,5 +1,5 @@
 # GuanjinQiuyuML
-This project contains 2 subsections. First is predict k value. Second is predict KTBA/k and KMEOH/k.
+This project contains 2 subsections. First is predict k value. Second are predict KTBA/k and KMEOH/k.
 ## K Prediction
         cd k_prediction
 ### 1. Some tools for dataset preparation and creation
