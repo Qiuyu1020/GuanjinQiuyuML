@@ -5,7 +5,7 @@ from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
 
-df = pd.read_excel("元素填0缩放.xlsx")
+df = pd.read_excel("dataset_filled_elements_ions_0.xlsx")
 
 
 ct_c0_cols = ["c1/c0", "c2/c0", "c3/c0", "c4/c0", "c5/c0"]
@@ -14,7 +14,7 @@ t_cols = ["t1", "t2", "t3", "t4", "t5"]
 
 
 highlight_indices = []
-
+omega = 0
 
 for i in range(len(df)):
     try:
@@ -31,14 +31,26 @@ for i in range(len(df)):
             df.at[i, "k"] = k
 
             if r2 < 0.85:
+
                 highlight_indices.append(i)
-                print(f"R^2 = {r2:.4f}")
+                omega = omega + 1
+                print(f"R^2 = {r2:.4f}" + f"numbers of highlight data: = {omega: .4f}")
+
 
     except Exception:
         continue
 
+def compute_log2k(x):
+    if pd.notna(x) and isinstance(x, (int, float)) and x > 0:
+        return np.log2(x)
+    else:
+        return ""
 
-output_file = "k.xlsx"
+
+df["log2k"] = df["k"].apply(compute_log2k)
+
+
+output_file = "dataset_filled_elements_ions_0_k_log2k.xlsx"
 df.to_excel(output_file, index=False)
 
 
