@@ -14,12 +14,12 @@ Click this bat file will bring up a web. The function of this web is to calculat
 
 
 3.     cd data preparation
-       cd start the Atomic Ratio Calculator and enter mol,bat
+       cd start the Atomic Ratio Calculator and enter mol.bat
 Click this bat file will bring up a web. The function of this web is to calculate the mass ratio of elements in the catalyst.
 
 
 4.     cd data preparation
-       cd XPS atomic number ratio conversion to atomic mass ratio .bat
+       cd XPS atomic number ratio conversion to atomic mass ratio.bat
 Click this bat file will bring up a web. The function of this web is to calculate the mass ratio of elements in the catalyst.
 
 
