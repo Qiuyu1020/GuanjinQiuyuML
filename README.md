@@ -26,23 +26,23 @@ Click this bat file will bring up a web. The function of this web is to calculat
        XPS atomic number ratio conversion to atomic mass ratio.bat
 Click this bat file will bring up a web. The function of this web is to calculate the mass ratio of elements in the catalyst.
 
-## 2. Data pre-processing
+## 2. Data pre-processing: Batching in dataset.
 ### 2.1 
         cd data_preprocessing
         python fill_elements_0.py
-Run this python file can fill 0s in the elements area.
+Run this python file to fill 0s in the elements area.
 ### 2.2
         cd data_preprocessing
         python fill_ions_0.py
-Run this python file can fill 0s in the ions area.
+Run this python file to fill 0s in the ions area.
 ### 2.3
          cd data_preprocessing
          python k_fitting_dataset.py
-Run this python file can fitting k value.
+Run this python file to fit k value.
 ### 2.4
           cd data_preprocessing
           python log2k.py
-Run this python file can compute log2k.
+Run this python file to compute log2k.
 
 
 
