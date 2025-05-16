@@ -43,7 +43,7 @@ Run this python file to fill 0s in the ions area.
 #### 2.3
          
          python k_fitting_dataset.py
-Run this python file to fit k value. The filter is R^2 < 00.85. If TRUE->quit. If FALSE->
+Run this python file to fit k value. The filter is R^2 < 00.85. If TRUE->quit. If FALSE->k
 #### 2.4
           
           python log2k.py
