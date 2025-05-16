@@ -50,7 +50,7 @@ print("sum of elements row not equal to 1：")
 for row in range(2, ws.max_row + 1):
     row_sum = sum(ws.cell(row=row, column=col).value or 0 for col in element_cols)
     if abs(row_sum - 1) > 1e-2:
-        print(f"行 {row}: elements mass ratio sum = {row_sum:.6f}")
+        print(f"row {row}: elements mass ratio sum = {row_sum:.6f}")
         for col in range(1, ws.max_column + 1):
             ws.cell(row=row, column=col).fill = red_fill
 
