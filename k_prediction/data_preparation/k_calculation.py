@@ -28,4 +28,4 @@ df['k'] = df.apply(lambda row: compute_k(row), axis=1)
 
 df.to_excel(file_path, index=False)
 
-print(f"处理完成，k列已计算并保存到：{file_path}")
+print(f"处理完成k列已计算并保存到：{file_path}")
