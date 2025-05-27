@@ -1,5 +1,13 @@
 # GuanjinQiuyuML
 This project contains 2 subsections. First is predict k value. Second are predict KTBA/k and KMEOH/k.
+## Create conda env
+        conda create -n ML python=3.10
+        conda activate ML
+        conda install -n ML numpy pandas matplotlib openpyxl scikit-learn -y
+        conda install -n ML numpy pandas scikit-learn matplotlib seaborn joblib xgboost -y
+        pip install torch pytorch-tabnet pytorch-tabular shap catboost
+        pip install periodictable streamlit
+        
 ## K Prediction
         cd k_prediction
 ### 1. Some tools for dataset preparation and creation
