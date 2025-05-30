@@ -2,8 +2,11 @@
 This project contains 2 subsections. First is predict k value. Second are predict KTBA/k and KMEOH/k.
 ## Create conda env
 Install Pycharm/Visual Studio Code.
+
 Install Anaconda 3.
+
 Open Anaconda Prompt. Type in following.
+
         conda create -n ML python=3.10
         conda activate ML
         conda install -n ML numpy pandas matplotlib openpyxl scikit-learn -y
