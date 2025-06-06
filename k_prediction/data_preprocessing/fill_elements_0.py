@@ -3,7 +3,7 @@ from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
 # read data
-df = pd.read_excel("dataset1.xlsx")
+df = pd.read_excel("combined_output.xlsx")
 
 # all 118 elements
 basic_elements = {
