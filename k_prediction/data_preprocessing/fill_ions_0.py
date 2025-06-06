@@ -4,7 +4,7 @@ import pandas as pd
 df = pd.read_excel("dataset_filled_elements_0.xlsx")
 
 
-target_columns = ["Cl-(mM)", "HCO3-(mM)", "HPO42-(mM)", "NO3-(mM)", "HA", "NOM"]
+target_columns = ["Cl-", "HCO3-", "HPO42-", "NO3-", "HA", "NOM"]
 
 
 for col in target_columns:
