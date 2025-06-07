@@ -10,7 +10,7 @@ import joblib
 import os
 
 # === 1. 读取数据 ===
-df = pd.read_excel("dataset_augmented.xlsx")
+df = pd.read_excel("dataset_k.xlsx")
 
 # 元素与离子变量
 element_cols = [col for col in [
