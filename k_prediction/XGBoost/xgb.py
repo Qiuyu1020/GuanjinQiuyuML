@@ -160,27 +160,81 @@ plt.tight_layout()
 plt.savefig("plots/error_distribution.png", dpi=300)
 plt.close()
 
-# === 8. SHAP 分析 ===
+
+
+# === 8. SHAP 分析（合并元素类和 active site 特征，并显示 Top 24）===
 explainer = shap.Explainer(best_model)
 shap_values = explainer(X_test)
 shap_df = pd.DataFrame(shap_values.values, columns=X_test.columns)
 
-# Top 10 特征条形图
+# 合并元素类特征与 Active Sites 特征
+element_cols = [col for col in shap_df.columns if col in [
+    'Fe', 'Mn', 'Zn', 'Mg', 'Bi', 'V', 'Zr', 'Na', 'Ni', 'Ru', 'La', 'Mo', 'W',
+    'Al', 'Sn', 'Si', 'Ti', 'B', 'C', 'N', 'H', 'O', 'P', 'K', 'F', 'Ag', 'S',
+    'Cu', 'Ca', 'Co', 'Ce', 'Cl']]
+active_site_cols = [col for col in shap_df.columns if col.startswith("active sites_")]
+
+# 组合 SHAP 值（按绝对值）
+shap_df["Element Composition"] = shap_df[element_cols].abs().sum(axis=1)
+shap_df["Active Sites"] = shap_df[active_site_cols].abs().sum(axis=1)
+
+# 为了 SHAP beeswarm 图保留 X 数据结构
+X_display = X_test.copy()
+
+# 使用 sum 或 mean 作为代表性 feature value 来给 beeswarm 图着色
+X_display["Element Composition"] = 0
+X_display["Active Sites"] = 0
+
+# 删除原始元素类与 active sites 特征列
+shap_df.drop(columns=element_cols + active_site_cols, inplace=True, errors="ignore")
+X_display.drop(columns=element_cols + active_site_cols, inplace=True, errors="ignore")
+
+# 计算平均 SHAP 值并获取前 24 个重要特征
 mean_shap = shap_df.abs().mean()
-top_features = mean_shap.sort_values(ascending=False).head(10).index.tolist()
-mean_shap[top_features].plot(kind="barh", figsize=(8, 5), title="Top 10 Mean SHAP Values")
+top_features = mean_shap.sort_values(ascending=False).head(60).index.tolist()
+
+# === Top 24 SHAP 条形图 ===
+mean_shap[top_features].plot(kind="barh", figsize=(10, 8), title="Top 24 Mean SHAP Values (Grouped)")
 plt.gca().invert_yaxis()
 plt.tight_layout()
-plt.savefig("plots/shap_bar.png", dpi=300)
+plt.savefig("plots/shap_bar_top24_grouped.png", dpi=300)
 plt.close()
 
-# 蜂群图（beeswarm）
+# === SHAP 蜂群图（Top 24） ===
 explanation = shap.Explanation(
     values=shap_df[top_features].values,
-    data=X_test[top_features].values,
+    data=X_display[top_features].values,
     feature_names=top_features
 )
-shap.plots.beeswarm(explanation, max_display=10, show=False)
+shap.plots.beeswarm(explanation, max_display=60, show=False)
 plt.tight_layout()
-plt.savefig("plots/shap_beeswarm.png", dpi=300)
+plt.savefig("plots/shap_beeswarm_top24_grouped.png", dpi=300)
 plt.close()
+
+
+
+
+# # === 8. SHAP 分析 ===
+# explainer = shap.Explainer(best_model)
+# shap_values = explainer(X_test)
+# shap_df = pd.DataFrame(shap_values.values, columns=X_test.columns)
+#
+# # Top 10 特征条形图
+# mean_shap = shap_df.abs().mean()
+# top_features = mean_shap.sort_values(ascending=False).head(10).index.tolist()
+# mean_shap[top_features].plot(kind="barh", figsize=(8, 5), title="Top 10 Mean SHAP Values")
+# plt.gca().invert_yaxis()
+# plt.tight_layout()
+# plt.savefig("plots/shap_bar.png", dpi=300)
+# plt.close()
+#
+# # 蜂群图（beeswarm）
+# explanation = shap.Explanation(
+#     values=shap_df[top_features].values,
+#     data=X_test[top_features].values,
+#     feature_names=top_features
+# )
+# shap.plots.beeswarm(explanation, max_display=10, show=False)
+# plt.tight_layout()
+# plt.savefig("plots/shap_beeswarm.png", dpi=300)
+# plt.close()
