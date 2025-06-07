@@ -11,7 +11,8 @@ df = pd.read_excel("dataset_filled_elements_ions_0.xlsx")
 ct_c0_cols = ["c1/c0", "c2/c0", "c3/c0", "c4/c0", "c5/c0"]
 t_cols = ["t1", "t2", "t3", "t4", "t5"]
 
-
+# ct_c0_cols = ["c6/c0", "c7/c0", "c8/c0", "c9/c0", "c10/c0"]
+# t_cols = ["t6", "t7", "t8", "t9", "t10"]
 
 highlight_indices = []
 omega = 0
