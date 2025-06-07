@@ -261,9 +261,9 @@ import joblib
 import os
 
 # === 1. 读取数据 ===
-df = pd.read_csv("datasetcsv.csv", encoding="utf-8-sig")
+df = pd.read_csv("dataset_nan_filled.csv", encoding="utf-8-sig")
 df["active sites"] = LabelEncoder().fit_transform(df["active sites"].astype(str))
-
+print(df.columns.tolist())
 # 元素与离子变量
 element_cols = [col for col in [
     'Fe', 'Mn', 'Zn', 'Mg', 'Bi', 'V', 'Zr', 'Na', 'Ni', 'Ru', 'La', 'Mo', 'W',
@@ -273,8 +273,8 @@ ion_cols = [col for col in ['Cl-', 'HCO3-', 'HPO42-', 'NO3-', 'HA', 'NOM'] if co
 
 # 原始变量
 raw_vars = [
-    'active sites', 'SSA', 'Ehomo', 'Elumo', 'Egap', 'Esum', 'EB3LYP', 'μ',
-    'q(H+)', 'q(CH+)x/q(CH+)n', 'q(C-)x/q(C-)n', 'BO', 'f(+)', 'f(−)', 'f(0)',
+    'active sites', 'SSA', 'Ehomo', 'Elumo', 'Egap', 'Esum', 'EB3LYP', 'u',
+    'q(H+)', 'q(CH+)x/q(CH+)n', 'q(C-)x/q(C-)n', 'BO', 'f(+)', 'f(-)', 'f(0)',
     'catalyst dosage', 'PMS dosage', 'pollutant dosage', 'pH']
 
 raw_df = df[raw_vars].reset_index(drop=True)

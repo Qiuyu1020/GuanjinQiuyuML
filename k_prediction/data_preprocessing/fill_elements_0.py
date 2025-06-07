@@ -3,7 +3,7 @@ from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
 # read data
-df = pd.read_excel("combined_output.xlsx")
+df = pd.read_excel("corrected_merged_dataset.xlsx")
 
 # all 118 elements
 basic_elements = {
@@ -32,7 +32,7 @@ for col in df.columns:
         df_processed[col] = df_processed[col].apply(lambda x: x / 100 if x > 1 else x)
 
 # save temp file
-output_path = "dataset_filled_elements_0.xlsx"
+output_path = "dataset_filled_elements_0111111111.xlsx"
 df_processed.to_excel(output_path, index=False)
 
 # reload with openpyxl
