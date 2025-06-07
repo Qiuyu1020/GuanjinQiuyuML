@@ -164,7 +164,7 @@ plt.close()
 
 # === 8. SHAP 分析（合并元素类和 active site 特征，并显示 Top 24）===
 explainer = shap.Explainer(best_model)
-shap_values = explainer(X_test)
+shap_values = explainer(X_test.values)
 shap_df = pd.DataFrame(shap_values.values, columns=X_test.columns)
 
 # 合并元素类特征与 Active Sites 特征
